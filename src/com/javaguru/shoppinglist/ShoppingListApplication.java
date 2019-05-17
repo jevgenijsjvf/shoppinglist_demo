@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -30,6 +31,7 @@ class ShoppingListApplication {
                         productRepository.put(productIdSequence, product);
                         productIdSequence++;
                         System.out.println("Result: " + product.getId());
+                        break;
                     case 2:
                         System.out.println("Enter product id: ");
                         long id = scanner.nextLong();
