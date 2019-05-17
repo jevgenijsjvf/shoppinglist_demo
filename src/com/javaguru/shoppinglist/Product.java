@@ -7,6 +7,9 @@ public class Product {
     private Long id;
     private String name;
     private BigDecimal price;
+    private String categoty;
+    private int discount;
+    private String description;
 
     public Long getId() {
         return id;
@@ -32,12 +35,39 @@ public class Product {
         this.price = price;
     }
 
+    public String getCategoty() {
+        return categoty;
+    }
+
+    public void setCategoty(String categoty) {
+        this.categoty = categoty;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", categoty='" + categoty + '\'' +
+                ", discount=" + discount +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
