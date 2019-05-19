@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,13 +12,11 @@ class ShoppingListApplication {
     public static void main(String[] args) {
         Map<Long, Product> productRepository = new HashMap<>();
         Long productIdSequence = 0L;
+        Validation validation = new Validation();
         while (true) {
             Scanner scanner = new Scanner(System.in);
             try {
-                System.out.println("1. Create product");
-                System.out.println("2. Find product by id");
-                System.out.println("3. Edit product by id");
-                System.out.println("4. Exit");
+                validation.menu();
                 Integer userInput = Integer.valueOf(scanner.nextLine());
                 switch (userInput) {
                     case 1:
@@ -27,10 +26,15 @@ class ShoppingListApplication {
                         BigDecimal price = new BigDecimal(scanner.nextLine());
                         System.out.println("Enter product category: ");
                         String category = scanner.nextLine();
-                        System.out.println("Enter product description: ");
-                        String description = scanner.nextLine();
-                        System.out.println("Enter product discount: ");
-                        int discount = scanner.nextInt();
+                        System.out.println("Enter product discount (0-80%): ");
+                        int discount= validation.discountCheck(scanner.nextInt());
+                        scanner.nextLine();
+
+                        System.out.println("Do you need a product description? Enter Y or N ");
+                        String descriptionYN = scanner.nextLine();
+                        String description = validation.description(descriptionYN);
+                        System.out.println(descriptionYN);
+
                         Product product = new Product();
                         product.setName(name);
                         product.setPrice(price);
@@ -46,7 +50,10 @@ class ShoppingListApplication {
                         System.out.println("Enter product id: ");
                         long id = scanner.nextLong();
                         Product findProductResult = productRepository.get(id);
-                        System.out.println(findProductResult);
+                        BigDecimal priceProduct = productRepository.get(id).getPrice();
+                        double discountProduct =  (double) productRepository.get(id).getDiscount()/100+1;
+                        BigDecimal priceWithDiscount = priceProduct.divide(BigDecimal.valueOf(discountProduct),2, RoundingMode.HALF_UP);
+                        System.out.println(findProductResult + " price with discount: " +(priceWithDiscount));
                         break;
                     case 3:
                         System.out.println("Enter product id: ");
@@ -55,6 +62,17 @@ class ShoppingListApplication {
                         System.out.println(findProductResult1);
                         break;
                     case 4:
+                        System.out.println("Enter product id: ");
+                        long id2 = scanner.nextLong();
+                        Product findProductResult2 = productRepository.remove(id2);
+                        System.out.println(findProductResult2);
+                        break;
+                    case 6:
+                        System.out.println("It is a test module");
+
+                        break;
+
+                    case 5:
                         return;
                 }
             } catch (Exception e) {
