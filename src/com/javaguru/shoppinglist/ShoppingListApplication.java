@@ -41,8 +41,9 @@ class ShoppingListApplication {
                         long id = scanner.nextLong();
                         Product findProductResult = productRepository.get(id);
                         BigDecimal priceProduct = productRepository.get(id).getPrice();
-                        double discountProduct = (double) productRepository.get(id).getDiscount() / 100 + 1;
-                        BigDecimal priceWithDiscount = priceProduct.divide(BigDecimal.valueOf(discountProduct), 2, RoundingMode.HALF_UP);
+                        double discountProduct = (double) productRepository.get(id).getDiscount();
+                        BigDecimal discountSum =( priceProduct.divide(BigDecimal.valueOf(100))).multiply(BigDecimal.valueOf(discountProduct));
+                        BigDecimal priceWithDiscount = priceProduct.subtract(discountSum);
                         System.out.println(findProductResult + " price with discount: " + (priceWithDiscount));
                         break;
                     case 3:
