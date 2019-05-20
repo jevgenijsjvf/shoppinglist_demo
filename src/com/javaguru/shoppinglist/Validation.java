@@ -1,8 +1,6 @@
 package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Validation {
@@ -94,9 +92,6 @@ public class Validation {
                 System.out.println("Error! Please try again.");
             }
         }
-
-
     }
-
 
 }

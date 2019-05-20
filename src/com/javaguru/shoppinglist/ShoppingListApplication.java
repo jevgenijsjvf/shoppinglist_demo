@@ -1,8 +1,6 @@
 package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -42,15 +40,51 @@ class ShoppingListApplication {
                         Product findProductResult = productRepository.get(id);
                         BigDecimal priceProduct = productRepository.get(id).getPrice();
                         double discountProduct = (double) productRepository.get(id).getDiscount();
-                        BigDecimal discountSum =( priceProduct.divide(BigDecimal.valueOf(100))).multiply(BigDecimal.valueOf(discountProduct));
+                        BigDecimal discountSum = (priceProduct.divide(BigDecimal.valueOf(100))).multiply(BigDecimal.valueOf(discountProduct));
                         BigDecimal priceWithDiscount = priceProduct.subtract(discountSum);
                         System.out.println(findProductResult + " price with discount: " + (priceWithDiscount));
                         break;
                     case 3:
+
                         System.out.println("Enter product id: ");
                         long id1 = scanner.nextLong();
-                        Product findProductResult1 = productRepository.get(id1);
-                        System.out.println(findProductResult1);
+
+                        System.out.println("What you want to change: ");
+                        System.out.println("1. Change name");
+                        System.out.println("2. Change price");
+                        System.out.println("3. Change category");
+                        System.out.println("4. Change discount");
+                        System.out.println("5. Change description");
+                        System.out.println("6. Exit");
+                        try {
+                            Integer userInputChange = Integer.valueOf(scanner.nextInt());
+                            switch (userInputChange) {
+                                case 1:
+                                    String name1 = validation.getName();
+                                    productRepository.get(id1).setName(name1);
+                                    break;
+                                case 2:
+                                    BigDecimal price1 = validation.getPrice();
+                                    productRepository.get(id1).setPrice(price1);
+                                    break;
+                                case 3:
+                                    String category1 = validation.getCategory();
+                                    productRepository.get(id1).setCategoty(category1);
+                                    break;
+                                case 4:
+                                    int discount1 = validation.getDiscount();
+                                    productRepository.get(id1).setDiscount(discount1);
+                                    break;
+                                case 5:
+                                    String description1 = validation.getDescription();
+                                    productRepository.get(id1).setDescription(description1);
+                                    break;
+                                case 6:
+                                    break;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Error! Please try again.");
+                        }
                         break;
                     case 4:
                         System.out.println("Enter product id: ");
