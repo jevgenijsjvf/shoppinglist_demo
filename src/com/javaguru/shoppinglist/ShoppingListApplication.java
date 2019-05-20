@@ -20,21 +20,11 @@ class ShoppingListApplication {
                 Integer userInput = Integer.valueOf(scanner.nextLine());
                 switch (userInput) {
                     case 1:
-                        System.out.println("Enter product name: ");
-                        String name = scanner.nextLine();
-                        System.out.println("Enter product price: ");
-                        BigDecimal price = new BigDecimal(scanner.nextLine());
-                        System.out.println("Enter product category: ");
-                        String category = scanner.nextLine();
-                        System.out.println("Enter product discount (0-80%): ");
-                        int discount= validation.discountCheck(scanner.nextInt());
-                        scanner.nextLine();
-
-                        System.out.println("Do you need a product description? Enter Y or N ");
-                        String descriptionYN = scanner.nextLine();
-                        String description = validation.description(descriptionYN);
-                        System.out.println(descriptionYN);
-
+                        String name = validation.getName();
+                        BigDecimal price = validation.getPrice();
+                        String category = validation.getCategory();
+                        int discount = validation.getDiscount();
+                        String description = validation.getDescription();
                         Product product = new Product();
                         product.setName(name);
                         product.setPrice(price);
@@ -51,9 +41,9 @@ class ShoppingListApplication {
                         long id = scanner.nextLong();
                         Product findProductResult = productRepository.get(id);
                         BigDecimal priceProduct = productRepository.get(id).getPrice();
-                        double discountProduct =  (double) productRepository.get(id).getDiscount()/100+1;
-                        BigDecimal priceWithDiscount = priceProduct.divide(BigDecimal.valueOf(discountProduct),2, RoundingMode.HALF_UP);
-                        System.out.println(findProductResult + " price with discount: " +(priceWithDiscount));
+                        double discountProduct = (double) productRepository.get(id).getDiscount() / 100 + 1;
+                        BigDecimal priceWithDiscount = priceProduct.divide(BigDecimal.valueOf(discountProduct), 2, RoundingMode.HALF_UP);
+                        System.out.println(findProductResult + " price with discount: " + (priceWithDiscount));
                         break;
                     case 3:
                         System.out.println("Enter product id: ");
@@ -69,9 +59,7 @@ class ShoppingListApplication {
                         break;
                     case 6:
                         System.out.println("It is a test module");
-
                         break;
-
                     case 5:
                         return;
                 }
