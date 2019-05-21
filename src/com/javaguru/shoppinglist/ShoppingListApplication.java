@@ -26,6 +26,7 @@ class ShoppingListApplication {
                         Product product = new Product();
                         product.setName(name);
                         product.setPrice(price);
+
                         product.setCategoty(category);
                         product.setDiscount(discount);
                         product.setDescription(description);
@@ -47,8 +48,7 @@ class ShoppingListApplication {
                     case 3:
 
                         System.out.println("Enter product id: ");
-                        long id1 = scanner.nextLong();
-
+                        long idEdit = scanner.nextLong();
                         System.out.println("What you want to change: ");
                         System.out.println("1. Change name");
                         System.out.println("2. Change price");
@@ -60,24 +60,24 @@ class ShoppingListApplication {
                             Integer userInputChange = Integer.valueOf(scanner.nextInt());
                             switch (userInputChange) {
                                 case 1:
-                                    String name1 = validation.getName();
-                                    productRepository.get(id1).setName(name1);
+                                    String nameEdit = validation.getName();
+                                    productRepository.get(idEdit).setName(nameEdit);
                                     break;
                                 case 2:
-                                    BigDecimal price1 = validation.getPrice();
-                                    productRepository.get(id1).setPrice(price1);
+                                    BigDecimal priceEdit = validation.getPrice();
+                                    productRepository.get(idEdit).setPrice(priceEdit);
                                     break;
                                 case 3:
-                                    String category1 = validation.getCategory();
-                                    productRepository.get(id1).setCategoty(category1);
+                                    String categoryEdit = validation.getCategory();
+                                    productRepository.get(idEdit).setCategoty(categoryEdit);
                                     break;
                                 case 4:
-                                    int discount1 = validation.getDiscount();
-                                    productRepository.get(id1).setDiscount(discount1);
+                                    int discountEdit = validation.getDiscount();
+                                    productRepository.get(idEdit).setDiscount(discountEdit);
                                     break;
                                 case 5:
-                                    String description1 = validation.getDescription();
-                                    productRepository.get(id1).setDescription(description1);
+                                    String descriptionEdit = validation.getDescription();
+                                    productRepository.get(idEdit).setDescription(descriptionEdit);
                                     break;
                                 case 6:
                                     break;
@@ -88,13 +88,13 @@ class ShoppingListApplication {
                         break;
                     case 4:
                         System.out.println("Enter product id: ");
-                        long id2 = scanner.nextLong();
-                        Product findProductResult2 = productRepository.remove(id2);
+                        long idRemove = scanner.nextLong();
+                        Product findProductResult2 = productRepository.remove(idRemove);
                         System.out.println(findProductResult2);
                         break;
-                    case 6:
-                        System.out.println("It is a test module");
-                        break;
+//                    case 6:
+//                        System.out.println("It is a test module");
+//                        break;
                     case 5:
                         return;
                 }

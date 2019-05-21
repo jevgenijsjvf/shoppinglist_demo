@@ -8,6 +8,7 @@ public class Validation {
     String description = null;
 
     public String getDescription() {
+        scanner.nextLine();
         System.out.println("Do you need a product description? Enter Y or N ");
         String answer = scanner.nextLine();
         if (answer.equals("Y") || answer.equals("y")) {
@@ -29,15 +30,15 @@ public class Validation {
         System.out.println("2. Find product by id");
         System.out.println("3. Edit product by id");
         System.out.println("4. Remove product by id");
-        System.out.println("6. My test case");
+        //System.out.println("6. My test case");
         System.out.println("5. Exit");
     }
 
     public String getName() {
         System.out.println("Enter product name: ");
-        String name1 = scanner.nextLine();
-        if (name1.length() > 3 && name1.length() < 30) {
-            return name1;
+        String name = scanner.nextLine();
+        if (name.length() > 3 && name.length() < 30) {
+            return name;
         } else {
             System.out.println("Name of product must be more than 3 symbol and less than 30 symbol. Try again.");
             return getName();
