@@ -95,6 +95,7 @@ class ShoppingListApplication {
 //                    case 6:
 //                        System.out.println("It is a test module");
 //                        break;
+                    //test
                     case 5:
                         return;
                 }
