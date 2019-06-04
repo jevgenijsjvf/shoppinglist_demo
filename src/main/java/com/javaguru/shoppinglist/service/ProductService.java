@@ -6,16 +6,12 @@ import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import java.math.BigDecimal;
 
 public class ProductService {
-    //создали хранилище и сервис валидации
+
     private ProductInMemoryRepository repository = new ProductInMemoryRepository();
     private ProductValidationService validationService = new ProductValidationService();
 
-    //этим методом в хранилище помещаем созданный ранее продукт по ид, предварительно выполняя метод из валидации
-   // сначала, делаем валидации и потом отправляем в хранилие
     public Long createProduct(Product product) {
-        //из сервиса валидации вызываем метод validate для проверки продукта
         validationService.validate(product);
-        //получаем введеный пользователем продукт, в репоситории, создаем продукт, там поместит в колекции. вернет продукт который поместил. тут вернется ид введеного продукта.
         Product createdProduct = repository.insert(product) ;
         return createdProduct.getId();
     }

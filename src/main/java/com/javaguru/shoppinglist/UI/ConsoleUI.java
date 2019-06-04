@@ -51,7 +51,6 @@ public class ConsoleUI {
         String category = main.enterCategory();                            //4
         String description = main.enterDescription();                      //5
 
-        //задаем значения продукту, создаем продукт.
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
@@ -59,7 +58,6 @@ public class ConsoleUI {
         product.setDiscount(discount);
         product.setDescription(description);
 
-        //по ID который возвращается помещеного продукта в колекцию
         Long id = productService.createProduct(product);
         System.out.println("Result: " + product.getId());
     }

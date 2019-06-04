@@ -7,9 +7,9 @@ import java.util.Set;
 
 public class ProductValidationService {
 
-    //HashSet с правилами
+
     private Set<ProductValidationRule> validationRules = new HashSet<>();
-    //метод, добавляющий правила
+
     public  ProductValidationService() {
 
         validationRules.add(new ProductNameValidationRule());
@@ -17,7 +17,7 @@ public class ProductValidationService {
         validationRules.add(new ProductPriceValidationRule());
     }
 
-    //производит проверку
+
     public void validate (Product product){
 
         validationRules.forEach(s -> s.validate(product));
