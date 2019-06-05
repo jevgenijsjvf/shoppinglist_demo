@@ -1,6 +1,7 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.service;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class Product {
 
@@ -69,5 +70,23 @@ public class Product {
                 ", discount=" + discount +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return discount == product.discount &&
+                Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(categoty, product.categoty) &&
+                Objects.equals(description, product.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, categoty, discount, description);
     }
 }
