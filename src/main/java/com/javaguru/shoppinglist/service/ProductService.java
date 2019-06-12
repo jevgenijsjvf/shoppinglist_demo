@@ -4,11 +4,17 @@ import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 
 import java.math.BigDecimal;
+import java.util.NoSuchElementException;
 
 public class ProductService {
 
-    private ProductInMemoryRepository repository = new ProductInMemoryRepository();
-    private ProductValidationService validationService = new ProductValidationService();
+    private final ProductInMemoryRepository repository;
+    private final ProductValidationService validationService;
+
+    public ProductService(ProductInMemoryRepository repository, ProductValidationService validationService) {
+        this.repository = repository;
+        this.validationService = validationService;
+    }
 
     public Long createProduct(Product product) {
         validationService.validate(product);
@@ -17,7 +23,8 @@ public class ProductService {
     }
 
     public Product findProductById(Long id) {
-        return repository.findProductById(id);
+        return repository.findProductById(id)
+                .orElseThrow(()->new NoSuchElementException("Product not found, id: "+ id));
     };
 
     public Product removeProductById (Long id) {
@@ -32,7 +39,7 @@ public class ProductService {
         return repository.changePrice(id, price);
     }
 
-    public Product editProductDiscountById (Long id, int discount) {
+    public Product editProductDiscountById (Long id, BigDecimal discount) {
         return repository.changeDiscount(id, discount);
     }
 

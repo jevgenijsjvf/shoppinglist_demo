@@ -18,10 +18,9 @@ public class MainService {
         return price;
     }
 
-    public int enterDiscount() {
+    public BigDecimal enterDiscount() {
         System.out.println("Enter product discount (0-80%): ");
-        int discount = scanner.nextInt();
-        scanner.nextLine();
+        BigDecimal discount = new BigDecimal(scanner.nextLine());
         return discount;
     }
 

@@ -8,8 +8,13 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class ConsoleUI {
-  private   ProductService productService = new ProductService();
-  private MainService main = new MainService();
+  private final ProductService productService;
+
+    public ConsoleUI(ProductService productService) {
+        this.productService = productService;
+    }
+
+    private MainService main = new MainService();
 
     public void  execute() {
         while (true) {
@@ -47,7 +52,7 @@ public class ConsoleUI {
         Scanner scanner = new Scanner(System.in);
         String name = main.enterName();                             //1
         BigDecimal price = main.enterPrice();                       //2
-        int discount = main.enterDiscount();                        //3
+        BigDecimal discount = main.enterDiscount();                        //3
         String category = main.enterCategory();                            //4
         String description = main.enterDescription();                      //5
 
@@ -68,10 +73,10 @@ public class ConsoleUI {
         long id = scanner.nextLong();
         Product product = productService.findProductById(id);
         BigDecimal priceProduct = productService.findProductById(id).getPrice();
-        double discountProduct = (double) productService.findProductById(id).getDiscount();
-        BigDecimal discountSum = (priceProduct.divide(BigDecimal.valueOf(100))).multiply(BigDecimal.valueOf(discountProduct));
+        BigDecimal discountProduct = productService.findProductById(id).getDiscount();
+        BigDecimal discountSum = (priceProduct.divide(BigDecimal.valueOf(100))).multiply(discountProduct);
         BigDecimal priceWithDiscount = priceProduct.subtract(discountSum);
-        System.out.println(product + " price with discount: " + (priceWithDiscount));
+        printProduct(product,priceWithDiscount);
     }
 
     public void editProduct() {
@@ -97,7 +102,7 @@ public class ConsoleUI {
                     productService.editProductPricebyId(id,price);
                     break;
                 case 3:
-                    int discount = main.enterDiscount();
+                    BigDecimal discount = main.enterDiscount();
                     productService.editProductDiscountById(id, discount);
                     break;
                 case 4:
@@ -122,6 +127,15 @@ public class ConsoleUI {
         long id = scanner.nextLong();
         Product product = productService.removeProductById(id);
         System.out.println("Removed products: "+product);
+    }
+
+    public void printProduct (Product product,BigDecimal priceWithDiscount ) {
+        System.out.print (product + " price with discount: ");
+        if(product.getPrice().compareTo(BigDecimal.valueOf(20))> 0) {
+            System.out.println(priceWithDiscount);
+        } else {
+            System.out.println("Discount not allowed");
+        }
     }
 
 

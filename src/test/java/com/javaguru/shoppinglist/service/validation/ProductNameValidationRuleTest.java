@@ -1,36 +1,45 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.service.Product;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
 public class ProductNameValidationRuleTest {
 
-    @Rule
-    public final ExpectedException expectedException = ExpectedException.none();
-    private ProductNameValidationRule victim = new ProductNameValidationRule();
+    @Spy
+    private ProductNameValidationRule victim;
     private Product input;
 
     @Test
     public void shouldThrowTaskValidationException() {
         input = product (null);
-        expectedException.expect(ProductValidationException.class);
-        expectedException.expectMessage("Product name must be not null.");
-        victim.validate(input);
+        assertThatThrownBy(() -> victim.validate(input))
+                .isInstanceOf(ProductValidationException.class)
+                .hasMessage("Product name must be not null.");
+        verify(victim).checkNotNull(input);
     }
     @Test
     public void shouldValidateSuccess() {
         input=product("Valid name");
         victim.validate(input);
+        verify(victim).checkNotNull(input);
     }
 
     @Test
     public void shoudBeLenghtLess() {
         input=product("aa");
-        expectedException.expect(ProductValidationException.class);
-        expectedException.expectMessage("Name of product must be more than 3 symbol and less than 30 symbol.");
-        victim.validate(input);
+        assertThatThrownBy(()-> victim.validate(input))
+                .isInstanceOf(ProductValidationException.class)
+                .hasMessage("Name of product must be more than 3 symbol and less than 30 symbol.");
+        verify(victim).checkNotNull(input);
+
     }
 
     private Product product(String name) {
