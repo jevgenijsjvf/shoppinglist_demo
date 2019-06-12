@@ -65,7 +65,7 @@ public class ProductServiceTest {
         assertThatThrownBy(() -> victim.findProductById(123L))
                 .isInstanceOf(NoSuchElementException.class)
                 .hasMessage("Product not found, id: 123");
-        
+
     }
 
     private Product product() {
