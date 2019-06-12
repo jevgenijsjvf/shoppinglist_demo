@@ -5,20 +5,21 @@ import com.javaguru.shoppinglist.service.Product;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 
 public class ProductInMemoryRepository {
     private Long productIdSequence = 0L;
     private Map<Long, Product> products = new HashMap<>();
 
-    public Product insert (Product product){
+    public Product insert(Product product){
         product.setId(productIdSequence++);
         products.put(product.getId(), product);
         return product;
     }
 
-    public Product findProductById (Long id) {
-        return products.get(id);
+    public Optional<Product> findProductById (Long id) {
+      return Optional.ofNullable(products.get(id));
     }
 
     public Product delete (Long id) {
@@ -37,7 +38,7 @@ public class ProductInMemoryRepository {
         return products.get(id);
     }
 
-    public Product changeDiscount (Long id, int discount) {
+    public Product changeDiscount (Long id, BigDecimal discount) {
         products.get(id).setDiscount(discount);
         return products.get(id);
     }
@@ -50,5 +51,9 @@ public class ProductInMemoryRepository {
     public Product changeDescription (Long id, String description) {
         products.get(id).setDescription(description);
         return products.get(id);
+    }
+
+    public Boolean existsByName (String name) {
+        return products.values().stream().anyMatch(product -> product.getName().equalsIgnoreCase(name));
     }
 }
