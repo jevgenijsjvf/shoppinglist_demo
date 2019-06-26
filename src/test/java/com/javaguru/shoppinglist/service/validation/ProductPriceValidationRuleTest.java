@@ -5,15 +5,20 @@ import com.javaguru.shoppinglist.service.Product;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class ProductPriceValidationRuleTest {
 
-    @Rule
-    public final ExpectedException expectedException = ExpectedException.none();
-    private ProductPriceValidationRule victim = new ProductPriceValidationRule();
+    @Spy
+    private ProductPriceValidationRule victim;
     private Product input;
 
     private Product product(BigDecimal price) {
@@ -23,16 +28,19 @@ public class ProductPriceValidationRuleTest {
     }
 
     @Test
-    public void shouldValidatePrice() {
+    public void shouldThrowProductPriceValidationException() {
         input = product (new BigDecimal(-5));
-        expectedException.expect(ProductValidationException.class);
-        expectedException.expectMessage("Price must be a positive number. Try again.");
-        victim.validate(input);
+        assertThatThrownBy(()-> victim.validate(input))
+                .isInstanceOf(ProductValidationException.class)
+                .hasMessage("Price must be a positive number. Try again.");
+        verify(victim).checkNotNull(input);
+
     }
 
     @Test
     public void shouldValidateSuccess() {
         input = product (new BigDecimal(5));
         victim.validate(input);
+        verify(victim).checkNotNull(input);
     }
 }
