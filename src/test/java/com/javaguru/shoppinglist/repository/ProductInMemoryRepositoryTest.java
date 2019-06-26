@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.repository;
 
-import com.javaguru.shoppinglist.service.Product;
+import com.javaguru.shoppinglist.Domain.Product;
 
 import org.junit.Test;
 

@@ -1,9 +1,11 @@
 package com.javaguru.shoppinglist.service.validation;
 
-import com.javaguru.shoppinglist.service.Product;
+import com.javaguru.shoppinglist.Domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
+@Component
 public class ProductValidationService {
 
 

@@ -1,16 +1,20 @@
 package com.javaguru.shoppinglist.UI;
 
 import com.javaguru.shoppinglist.service.MainService;
-import com.javaguru.shoppinglist.service.Product;
+import com.javaguru.shoppinglist.Domain.Product;
 import com.javaguru.shoppinglist.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+@Component
 public class ConsoleUI {
   private final ProductService productService;
   private int minDiscountPrice = 20;
 
+    @Autowired
     public ConsoleUI(ProductService productService) {
         this.productService = productService;
     }
