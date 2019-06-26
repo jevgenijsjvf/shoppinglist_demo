@@ -12,6 +12,7 @@ public class Product {
     private BigDecimal discount;
     private String description;
 
+
     public Long getId() {
         return id;
     }
