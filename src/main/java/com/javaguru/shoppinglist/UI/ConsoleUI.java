@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class ConsoleUI {
   private final ProductService productService;
+  private int minDiscountPrice = 20;
 
     public ConsoleUI(ProductService productService) {
         this.productService = productService;
@@ -131,7 +132,7 @@ public class ConsoleUI {
 
     public void printProduct (Product product,BigDecimal priceWithDiscount ) {
         System.out.print (product + " price with discount: ");
-        if(product.getPrice().compareTo(BigDecimal.valueOf(20))> 0) {
+        if(product.getPrice().compareTo(BigDecimal.valueOf(minDiscountPrice))> 0) {
             System.out.println(priceWithDiscount);
         } else {
             System.out.println("Discount not allowed");
