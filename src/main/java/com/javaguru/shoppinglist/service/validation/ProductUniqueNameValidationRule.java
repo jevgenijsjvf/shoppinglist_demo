@@ -1,12 +1,15 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
-import com.javaguru.shoppinglist.service.Product;
+import com.javaguru.shoppinglist.Domain.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ProductUniqueNameValidationRule implements ProductValidationRule {
-   // ProductService service = new ProductService();
     private final ProductInMemoryRepository repository;
 
+    @Autowired
     public ProductUniqueNameValidationRule(ProductInMemoryRepository repository) {
         this.repository = repository;
     }
