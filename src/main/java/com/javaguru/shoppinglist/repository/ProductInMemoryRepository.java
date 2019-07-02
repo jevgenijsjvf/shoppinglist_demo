@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.repository;
 
-import com.javaguru.shoppinglist.Domain.Product;
+import com.javaguru.shoppinglist.domain.Product;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -9,7 +10,8 @@ import java.util.Map;
 import java.util.Optional;
 
 @Component
-public class ProductInMemoryRepository {
+@Profile("inmemorydb")
+public class ProductInMemoryRepository implements ProductRepository{
     private Long productIdSequence = 0L;
     private Map<Long, Product> products = new HashMap<>();
 

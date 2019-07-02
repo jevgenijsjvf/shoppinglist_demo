@@ -1,7 +1,7 @@
-package com.javaguru.shoppinglist.UI;
+package com.javaguru.shoppinglist.console;
 
 import com.javaguru.shoppinglist.service.MainService;
-import com.javaguru.shoppinglist.Domain.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,8 +1,11 @@
 package com.javaguru.shoppinglist.service;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+@Component
 public class MainService {
     Scanner scanner = new Scanner(System.in);
 

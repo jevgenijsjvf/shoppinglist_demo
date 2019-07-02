@@ -1,4 +1,4 @@
-package com.javaguru.shoppinglist.Domain;
+package com.javaguru.shoppinglist.domain;
 
 import java.math.BigDecimal;
 import java.util.Objects;
