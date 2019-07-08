@@ -1,4 +1,5 @@
-CREATE SCHEMA IF NOT EXISTS products (
+CREATE SCHEMA IF NOT EXISTS shoppinglist DEFAULT CHARACTER SET utf8 ;
+create table IF not exists product(
     id          BIGINT NOT NULL AUTO_INCREMENT,
     name        VARCHAR(100) NOT NULL,
     price       DECIMAL(40) NULL,
