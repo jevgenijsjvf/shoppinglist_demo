@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.service.validation;
 
-import com.javaguru.shoppinglist.Domain.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,7 +13,7 @@ public class ProductNameValidationRule implements ProductValidationRule{
         }
         if (product.getName().length()>3 && product.getName().length()<25) {
          } else {
-            throw new ProductValidationException("Name of product must be more than 3 symbol and less than 30 symbol.");
+            throw new ProductValidationException("Name of product must be more than 3 symbol and less than 25 symbol.");
         }
     }
 }

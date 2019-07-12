@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.service.validation;
 
-import com.javaguru.shoppinglist.Domain.Product;
+import com.javaguru.shoppinglist.domain.Product;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +37,7 @@ public class ProductNameValidationRuleTest {
         input=product("aa");
         assertThatThrownBy(()-> victim.validate(input))
                 .isInstanceOf(ProductValidationException.class)
-                .hasMessage("Name of product must be more than 3 symbol and less than 30 symbol.");
+                .hasMessage("Name of product must be more than 3 symbol and less than 25 symbol.");
         verify(victim).checkNotNull(input);
 
     }

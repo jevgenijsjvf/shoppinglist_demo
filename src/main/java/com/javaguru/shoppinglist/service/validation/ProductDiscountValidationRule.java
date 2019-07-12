@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist.service.validation;
 
-import com.javaguru.shoppinglist.Domain.Product;
+import com.javaguru.shoppinglist.domain.Product;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
