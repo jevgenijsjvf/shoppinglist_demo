@@ -53,8 +53,8 @@ public class AppConfig {
     @Bean
     public Properties hibernateProperties (
             @Value("${hibernate.dialect}") String dialect,
-            @Value("${hibernate.show_sql}") String showSql,
-            @Value("${hibernate.format_sql}") String formatSql,
+            @Value("${hibernate.show_sql}") boolean showSql,
+            @Value("${hibernate.format_sql}") boolean formatSql,
             @Value("${hibernate.hbm2ddl.auto}") String hbm2dd1) {
 
         Properties properties = new Properties();

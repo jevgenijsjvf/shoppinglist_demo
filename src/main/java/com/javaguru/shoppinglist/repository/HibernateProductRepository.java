@@ -29,6 +29,10 @@ public class HibernateProductRepository implements ProductRepository{
         return product;
     }
 
+    public void update(Product product){
+        sessionFactory.getCurrentSession().update(product);
+    }
+
     @Override
     public Optional<Product> findProductById(Long id) {
         Product product = (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)

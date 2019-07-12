@@ -8,13 +8,13 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 @Component
-public class findProductByIdAction implements Action{
+public class FindProductByIdAction implements Action{
 
     private static final String ACTION_NAME = "Find by ID";
     private final ProductService productService;
     private int minDiscountPrice = 20;
 
-    public findProductByIdAction(ProductService productService) {
+    public FindProductByIdAction(ProductService productService) {
         this.productService = productService;
     }
 
@@ -35,5 +35,10 @@ public class findProductByIdAction implements Action{
         } else {
             System.out.println("Discount not allowed");
         }
+    }
+
+    @Override
+    public String toString() {
+        return ACTION_NAME;
     }
 }
