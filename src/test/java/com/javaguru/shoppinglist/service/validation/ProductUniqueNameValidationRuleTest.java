@@ -1,8 +1,8 @@
 package com.javaguru.shoppinglist.service.validation;
 
-import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import com.javaguru.shoppinglist.domain.Product;
 
+import com.javaguru.shoppinglist.repository.ProductRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -18,12 +18,14 @@ import static org.mockito.Mockito.when;
 public class ProductUniqueNameValidationRuleTest {
 
     @Mock
-    private ProductInMemoryRepository productInMemoryRepository;
+    private ProductRepository productInMemoryRepository;
 
     @Spy
     @InjectMocks
     private ProductUniqueNameValidationRule victim;
+
     private Product product= product();
+
 
     private Product product() {
         Product product = new Product();

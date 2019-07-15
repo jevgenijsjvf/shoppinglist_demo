@@ -10,6 +10,7 @@ import java.util.List;
 
 @Configuration
 public class ConsoleUIConfiguration {
+
     @Autowired
     private Action createProductAction;
     @Autowired
@@ -21,12 +22,16 @@ public class ConsoleUIConfiguration {
     @Autowired
     private Action exitAction;
 
+    @Autowired
+    private Action assigProductAction;
+
     @Bean
     ConsoleUI consoleUI() {
         List<Action> actions=new ArrayList<>();
         actions.add(createProductAction);
         actions.add(findProductByIdAction);
         actions.add(editProductByIdAction);
+        actions.add(assigProductAction);
         actions.add(removeProductByIdAction);
         actions.add(exitAction);
         return new ConsoleUI(actions);

@@ -43,8 +43,6 @@ public class HibernateProductRepository implements ProductRepository{
 
     @Override
     public Product delete(Long id) {
-        //Product product = (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
-
         sessionFactory.getCurrentSession().delete(Restrictions.eq("id",id));
         return null;
     }
