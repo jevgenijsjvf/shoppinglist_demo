@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class removeProductByIdAction implements Action{
+public class RemoveProductByIdAction implements Action{
     private static final String ACTION_NAME = "Remove by ID";
     private final ProductService productService;
 
-    public removeProductByIdAction(ProductService productService) {
+    public RemoveProductByIdAction(ProductService productService) {
         this.productService = productService;
     }
 
@@ -22,5 +22,10 @@ public class removeProductByIdAction implements Action{
         long id = scanner.nextLong();
         Product product = productService.removeProductById(id);
         System.out.println("Removed products: "+product);
+    }
+
+    @Override
+    public String toString() {
+        return ACTION_NAME;
     }
 }

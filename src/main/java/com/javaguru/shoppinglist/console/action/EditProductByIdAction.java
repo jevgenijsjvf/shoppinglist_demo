@@ -8,13 +8,13 @@ import java.math.BigDecimal;
 import java.util.Scanner;
 
 @Component
-public class editProductByIdAction implements Action{
+public class EditProductByIdAction implements Action{
 
     private static final String ACTION_NAME = "Edit by ID";
     private final ProductService productService;
     private MainService main = new MainService();
 
-    public editProductByIdAction(ProductService productService) {
+    public EditProductByIdAction(ProductService productService) {
                 this.productService = productService;
     }
 
@@ -60,5 +60,10 @@ public class editProductByIdAction implements Action{
         } catch (Exception e) {
             System.out.println("Error! Please try again.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return ACTION_NAME;
     }
 }

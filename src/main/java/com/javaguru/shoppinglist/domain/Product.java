@@ -6,14 +6,14 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@Table(name = "product");
+@Table(name = "product")
 public class Product {
     @Id
     @Column(name= "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name= "name")
+    @Column(name= "name", unique = true, nullable = false)
     private String name;
 
     @Column (name = "price")

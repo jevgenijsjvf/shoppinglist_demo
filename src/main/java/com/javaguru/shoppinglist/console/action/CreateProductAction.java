@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 @Component
 public class CreateProductAction implements Action {
+
     private static final String ACTION_NAME = "Create product";
     private final ProductService productService;
     private MainService main = new MainService();
