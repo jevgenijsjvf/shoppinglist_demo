@@ -36,8 +36,8 @@ public class CreateProductAction implements Action {
         product.setDiscount(discount);
         product.setDescription(description);
         try {
-            Long id = productService.createProduct(product);
-            System.out.println("Result: " + id);
+            Product respose = productService.createProduct(product);
+            System.out.println("Result: " + respose);
         } catch (ProductValidationException e) {
             System.out.println(e.getMessage());
         }

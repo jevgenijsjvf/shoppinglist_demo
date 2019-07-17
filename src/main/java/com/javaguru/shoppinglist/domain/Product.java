@@ -28,6 +28,8 @@ public class Product {
     @Column (name = "description")
     private String description;
 
+    @Column(name = "shoppingCart_id")
+    private Long shoppingCartId;
 
     public Long getId() {
         return id;
@@ -77,6 +79,33 @@ public class Product {
         this.description = description;
     }
 
+    public Long getShoppingCartId() {
+        return shoppingCartId;
+    }
+
+    public void setShoppingCartId(Long shoppingCartId) {
+        this.shoppingCartId = shoppingCartId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(categoty, product.categoty) &&
+                Objects.equals(discount, product.discount) &&
+                Objects.equals(description, product.description) &&
+                Objects.equals(shoppingCartId, product.shoppingCartId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, categoty, discount, description, shoppingCartId);
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -86,24 +115,7 @@ public class Product {
                 ", categoty='" + categoty + '\'' +
                 ", discount=" + discount +
                 ", description='" + description + '\'' +
+                ", shoppingCartId=" + shoppingCartId +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product product = (Product) o;
-        return discount == product.discount &&
-                Objects.equals(id, product.id) &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(price, product.price) &&
-                Objects.equals(categoty, product.categoty) &&
-                Objects.equals(description, product.description);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, price, categoty, discount, description);
     }
 }
