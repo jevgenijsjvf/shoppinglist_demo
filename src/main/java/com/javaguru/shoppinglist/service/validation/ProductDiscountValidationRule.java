@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 
 @Component
 public class ProductDiscountValidationRule implements ProductValidationRule {
-    private int minDiscountValue = 0;
-    private int maxDiscountValue = 80;
+    private final int minDiscountValue = 0;
+    private final int maxDiscountValue = 80;
 
     @Override
     public void validate(Product product) {

@@ -6,7 +6,7 @@ create table IF not exists product(
     category    VARCHAR(100) NULL,
     discount    DECIMAL (40) NULL,
     description VARCHAR(100) NULL,
-    shoppingCart_id BIGINT NULL,
+    shopping_cart_id BIGINT NULL,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
     )
@@ -24,4 +24,4 @@ CREATE TABLE IF NOT EXISTS shoppingCarts (
     ENGINE = InnoDB
     AUTO_INCREMENT = 1002;
 
-ALTER TABLE product ADD CONSTRAINT shoppingCarts_product_fk FOREIGN KEY (shoppingCart_id) REFERENCES shoppingCarts(id);
+ALTER TABLE product ADD CONSTRAINT shoppingCarts_product_fk FOREIGN KEY (shopping_cart_id) REFERENCES shoppingCarts(id);

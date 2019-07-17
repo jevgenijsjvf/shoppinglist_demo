@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.NoSuchElementException;
 
 @Component
 public class ProductService {
@@ -31,7 +30,7 @@ public class ProductService {
     public Product findProductById(Long id) {
         return repository.findProductById(id)
                 .orElseThrow(()->new IllegalArgumentException("Product not found, id: "+ id));
-    };
+    }
 
     public Product removeProductById (Long id) {
         return repository.delete(id);
