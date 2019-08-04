@@ -7,7 +7,6 @@ import com.javaguru.shoppinglist.service.validation.ProductValidationException;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.Scanner;
 
 @Component
 public class CreateProductAction implements Action {
