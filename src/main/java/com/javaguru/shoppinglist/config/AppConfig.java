@@ -1,5 +1,4 @@
 package com.javaguru.shoppinglist.config;
-
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -46,7 +44,6 @@ public class AppConfig {
     }
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-
         return new JdbcTemplate(dataSource);
     }
 

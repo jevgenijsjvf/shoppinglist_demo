@@ -4,7 +4,6 @@ import com.javaguru.shoppinglist.domain.ShoppingCart;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +11,11 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-public class HibernateShopingCartRepository {
+public class HibernateShoppingCartRepository {
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public HibernateShopingCartRepository(SessionFactory sessionFactory) {
+    public HibernateShoppingCartRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

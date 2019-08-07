@@ -7,7 +7,6 @@ import com.javaguru.shoppinglist.service.validation.ProductValidationException;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.Scanner;
 
 @Component
 public class CreateProductAction implements Action {
@@ -22,7 +21,6 @@ public class CreateProductAction implements Action {
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
         String name = main.enterName();
         BigDecimal price = main.enterPrice();
         BigDecimal discount = main.enterDiscount();

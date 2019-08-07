@@ -2,7 +2,7 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import com.javaguru.shoppinglist.repository.HibernateShopingCartRepository;
+import com.javaguru.shoppinglist.repository.HibernateShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +10,10 @@ import java.util.NoSuchElementException;
 
 @Component
 public class ShoppingCartService {
-    private final HibernateShopingCartRepository shopingCartRepository;
+    private final HibernateShoppingCartRepository shopingCartRepository;
 
     @Autowired
-    public ShoppingCartService(HibernateShopingCartRepository shopingCartRepository) {
+    public ShoppingCartService(HibernateShoppingCartRepository shopingCartRepository) {
         this.shopingCartRepository = shopingCartRepository;
     }
 

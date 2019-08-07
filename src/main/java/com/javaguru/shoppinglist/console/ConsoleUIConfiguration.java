@@ -21,9 +21,8 @@ public class ConsoleUIConfiguration {
     private Action removeProductByIdAction;
     @Autowired
     private Action exitAction;
-
     @Autowired
-    private Action assigProductAction;
+    private Action assignProductAction;
 
     @Bean
     ConsoleUI consoleUI() {
@@ -31,7 +30,7 @@ public class ConsoleUIConfiguration {
         actions.add(createProductAction);
         actions.add(findProductByIdAction);
         actions.add(editProductByIdAction);
-        actions.add(assigProductAction);
+        actions.add(assignProductAction);
         actions.add(removeProductByIdAction);
         actions.add(exitAction);
         return new ConsoleUI(actions);

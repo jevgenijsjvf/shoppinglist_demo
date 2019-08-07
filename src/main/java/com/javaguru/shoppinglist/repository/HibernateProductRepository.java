@@ -1,5 +1,4 @@
 package com.javaguru.shoppinglist.repository;
-
 import com.javaguru.shoppinglist.domain.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -7,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -74,9 +72,9 @@ public class HibernateProductRepository implements ProductRepository{
 
     @Override
     public Boolean existsByName(String name) {
-        String query = "select case when count(*)>0 "+
-                "then rule else false end " +
-                "from Task t where t.name= '" + name + "'";
+        String query = "select case when count(*)> 0 "+
+                "then true else false end " +
+                "from Product t where t.name='" + name + "'";
         return (boolean) sessionFactory.getCurrentSession().createQuery(query)
                 .setMaxResults(1)
                 .uniqueResult();

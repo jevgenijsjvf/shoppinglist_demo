@@ -32,7 +32,7 @@ public class EditProductByIdAction implements Action{
         System.out.println("5. Change description");
         System.out.println("6. Exit");
         try {
-            Integer userInputChange = Integer.valueOf(scanner.nextInt());
+            Integer userInputChange = scanner.nextInt();
             switch (userInputChange) {
                 case 1:
                     String name = main.enterName();
@@ -58,7 +58,7 @@ public class EditProductByIdAction implements Action{
                     break;
             }
         } catch (Exception e) {
-            System.out.println("Error! Please try again.");
+            System.out.println("Error!!! Please try again.");
         }
     }
 
