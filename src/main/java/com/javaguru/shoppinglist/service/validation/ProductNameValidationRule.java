@@ -1,17 +1,18 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductNameValidationRule implements ProductValidationRule{
     @Override
-    public void validate(Product product) {
-        checkNotNull(product);
-        if (product.getName() == null) {
+    public void validate(ProductDTO productDTO) {
+        checkNotNull(productDTO);
+        if (productDTO.getName() == null) {
             throw new ProductValidationException("Product name must be not null.");
         }
-        if (product.getName().length()>3 && product.getName().length()<25) {
+        if (productDTO.getName().length()>3 && productDTO.getName().length()<25) {
          } else {
             throw new ProductValidationException("Name of product must be more than 3 symbol and less than 25 symbol.");
         }

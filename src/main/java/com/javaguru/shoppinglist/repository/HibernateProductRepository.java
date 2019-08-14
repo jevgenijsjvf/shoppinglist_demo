@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist.repository;
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDTO;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,17 @@ public class HibernateProductRepository implements ProductRepository{
     }
 
     @Override
-    public Product insert(Product product) {
-        sessionFactory.getCurrentSession().save(product);
-        return product;
+    public Long insert(Product product) {
+        return null;
     }
+
+    @Override
+    public ProductDTO insert(ProductDTO productDTO) {
+        sessionFactory.getCurrentSession().save(productDTO);
+        return productDTO;
+    }
+
+
 
     public void update(Product product){
         sessionFactory.getCurrentSession().update(product);
